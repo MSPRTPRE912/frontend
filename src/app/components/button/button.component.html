@@ -1,0 +1,7 @@
+<button (mouseover)="hover=true" (mouseleave)="hover=false" (click)="onClick()" [ngClass]="type" [type]="clickType" [ngStyle]="
+    {
+        backgroundColor: (type == 'primary' && !hover) || (type == 'secondary' && hover) ? color : '#FFF',
+        borderColor: (type == 'secondary' && !hover) || (type == 'primary') ? color : 'none',
+        color: (type == 'secondary' && !hover) || (type == 'primary' && hover) ? color : '#FFF'
+    }
+    ">{{label}}</button>

@@ -1,0 +1,14 @@
+button{
+    display: block;
+    margin: 10px auto;
+    padding: 7px 30px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 7px;
+    font-size: 1em;
+    border: 2px solid;
+    font-weight: 700;
+    transition: all 200ms ease-in;
+}
