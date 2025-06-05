@@ -1,0 +1,29 @@
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content" class="register-page" aria-label="Register page">
+    <h1>Register</h1>
+    @if (!showQrCodes()) {
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" aria-label="Register form">
+            <app-input formControlName="email" label="Email"></app-input>
+            <app-input formControlName="firstname" label="Firstname"></app-input>
+            <app-input formControlName="lastname" label="Lastname"></app-input>
+            <div class="buttons">
+                <app-button label="Login" clickType="button" color="secondary-color" type="secondary" (clickAction)="toLoginPage()"></app-button>
+                <app-button label="Register" clickType="submit" color="primary-color"></app-button>
+            </div>
+        </form>
+    }
+    @else {
+        <div class="qr-codes">
+            <div class="qr-otp">
+                <img [src]="imgQrOtp()" alt="OTP QR Code" />
+                <p>TOTP Code</p>
+            </div>
+
+            <div class="qr-password">
+                <img [src]="imgQrPassword()" alt="Password QR Code" />
+                <p>Password</p>
+            </div>
+        </div>
+    }
+</main>

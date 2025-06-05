@@ -1,0 +1,14 @@
+.login-page h1{
+    text-align: center;
+    margin: 50px 0;
+}
+
+.login-page form{
+    width: 400px;
+    margin: auto;
+}
+
+.login-page .buttons{
+    display: flex;
+    justify-content: space-around;
+}

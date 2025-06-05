@@ -1,0 +1,45 @@
+.register-page h1{
+    text-align: center;
+    margin: 50px 0;
+}
+
+.register-page form{
+    width: 400px;
+    margin: auto;
+}
+
+.register-page .buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+.register-page .qr-codes{
+    display: flex;
+    justify-content: space-around;
+}
+
+.register-page .qr-codes img{
+    padding: 10px;
+    border: 3px solid var(--primary-color);
+    border-radius: 7px;
+    width: 300px;
+}
+
+.register-page .qr-codes p{
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+@media only screen and (max-width: 800px){
+    .register-page .qr-codes{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .register-page .qr-codes img{
+        margin-top: 30px;
+    }
+}
