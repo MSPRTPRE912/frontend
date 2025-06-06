@@ -18,14 +18,14 @@ export class AuthService {
     http = inject(HttpClient);
 
     authenticate(data: AuthenticateRequestModel): Observable<AuthenticatResponseModel>{
-        return this.http.post<AuthenticatResponseModel>(this.apiUrl + "/authenticate", data);
+        return this.http.post<AuthenticatResponseModel>(this.apiUrl + "function/authenticate", data);
     }
 
     generatePassword(data: GeneratePasswordRequestModel): Observable<GeneratePasswordResponseModel>{
-        return this.http.post<GeneratePasswordResponseModel>(this.apiUrl + "/generate-password", data);
+        return this.http.post<GeneratePasswordResponseModel>(this.apiUrl + "function/generate-password", data);
     }
 
     generateOTP(data: GenerateOTPRequestModel): Observable<GenerateOTPResponseModel>{
-        return this.http.post<GenerateOTPResponseModel>(this.apiUrl + "/generate-2fa", data);
+        return this.http.post<GenerateOTPResponseModel>(this.apiUrl + "function/generate-2fa", data);
     }
 }
