@@ -4,6 +4,8 @@ import { ButtonComponent } from '../../components/button/button.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { AuthenticateRequestModel } from '../../models/authenticate-request.model';
+import { StorageService } from '../../utils/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +16,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
     router = inject(Router);
     authService = inject(AuthService);
+    storateService = inject(StorageService);
 
     loginForm: FormGroup = new FormGroup([]);
 
@@ -26,7 +29,25 @@ export class LoginComponent {
     }
 
     onSubmit(){
-        
+        let authenticateRequest: AuthenticateRequestModel = {
+            user_id: this.loginForm.controls["email"].value,
+            password: this.loginForm.controls["password"].value,
+            code_2fa: this.loginForm.controls["otpCode"].value
+        };
+        this.authService.authenticate(authenticateRequest).subscribe({
+            next: (response) => {
+                if(response.status && response.status == "ok") {
+                    this.storateService.setToken(this.loginForm.controls["email"].value);
+                    this.router.navigate(["dashboard"]);
+                }
+                else if(response.status) {
+
+                }
+                else if(response.error) {
+
+                }
+            }
+        })
     }
 
     toRegisterPage(){

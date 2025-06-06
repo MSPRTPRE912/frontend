@@ -1,16 +1,31 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { RegisterRequestModel } from '../models/register-request.model';
-import { LoginRequestModel } from '../models/login-request.model';
+import { GeneratePasswordRequestModel } from '../models/generate-password-request.model';
+import { AuthenticateRequestModel } from '../models/authenticate-request.model';
 import { environment } from '../../environments/environment';
+import { GenerateOTPRequestModel } from '../models/generate-otp-request.model';
+import { AuthenticatResponseModel } from '../models/authenticate-response.model';
+import { GeneratePasswordResponseModel } from '../models/generate-password-response.model';
+import { GenerateOTPResponseModel } from '../models/generate-otp-response.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    rootUrl = environment.rootApiUrl;
-    elementUrl = "auth";
+    apiUrl = environment.apiUrl;
 
     http = inject(HttpClient);
+
+    authenticate(data: AuthenticateRequestModel): Observable<AuthenticatResponseModel>{
+        return this.http.post<AuthenticatResponseModel>(this.apiUrl + "/authenticate", data);
+    }
+
+    generatePassword(data: GeneratePasswordRequestModel): Observable<GeneratePasswordResponseModel>{
+        return this.http.post<GeneratePasswordResponseModel>(this.apiUrl + "/generate-password", data);
+    }
+
+    generateOTP(data: GenerateOTPRequestModel): Observable<GenerateOTPResponseModel>{
+        return this.http.post<GenerateOTPResponseModel>(this.apiUrl + "/generate-2fa", data);
+    }
 }
