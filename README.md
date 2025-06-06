@@ -6,7 +6,7 @@ Frontend app of the project
 
 Available variables are :
 
-| Variables | Type     | Description                |
+| Variable | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `API_URL` | `string` | **Required**. API URL of OpenFaas |
 | `APP_PORT` | `number` | **Required**. Frontend app port |
