@@ -12,3 +12,39 @@
     display: flex;
     justify-content: space-around;
 }
+
+.error-message {
+    text-align: center;
+    color: var(--danger-color);
+}
+
+.login-page .qr-codes{
+    display: flex;
+    justify-content: space-around;
+}
+
+.login-page .qr-codes img{
+    padding: 10px;
+    border: 3px solid var(--primary-color);
+    border-radius: 7px;
+    width: 300px;
+}
+
+.login-page .qr-codes p{
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+@media only screen and (max-width: 800px){
+    .login-page .qr-codes{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .login-page .qr-codes img{
+        margin-top: 30px;
+    }
+}

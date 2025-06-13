@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: "__API_URL__"
+    apiUrl: "http://k3s-master-1:80/"
 };

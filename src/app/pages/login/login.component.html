@@ -2,13 +2,34 @@
 
 <main id="main-content" class="login-page" aria-label="Login page">
     <h1>Login</h1>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" aria-label="Login form">
-        <app-input formControlName="email" label="Email"></app-input>
-        <app-input formControlName="password" label="Password" type="password"></app-input>
-        <app-input formControlName="otpCode" label="2FA Code"></app-input>
-        <div class="buttons">
-            <app-button label="Register" clickType="button" color="secondary-color" type="secondary" (clickAction)="toRegisterPage()"></app-button>
-            <app-button label="Login" clickType="submit" color="primary-color"></app-button>
+    @if (!showQrCodes()) {
+        @if(errorMessage() != "") {
+            <div class="error-message">{{errorMessage()}}</div>
+        }
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" aria-label="Login form">
+            <app-input formControlName="email" label="Email"></app-input>
+            <app-input formControlName="password" label="Password" type="password"></app-input>
+            <app-input formControlName="otpCode" label="2FA Code"></app-input>
+            <div class="buttons">
+                <app-button label="Register" clickType="button" color="secondary-color" type="secondary" (clickAction)="toRegisterPage()"></app-button>
+                <app-button label="Login" clickType="submit" color="primary-color"></app-button>
+            </div>
+        </form>
+    }
+    @else {
+        <div class="qr-codes">
+            <div class="qr-otp">
+                <img [src]="imgQrOtp()" alt="OTP QR Code" />
+                <p>TOTP Code</p>
+            </div>
+
+            <div class="qr-password">
+                <img [src]="imgQrPassword()" alt="Password QR Code" />
+                <p>Password</p>
+            </div>
         </div>
-    </form>
+        <div class="buttons">
+            <app-button label="Login" clickType="button" color="secondary-color" type="secondary" (clickAction)="toLoginPage()"></app-button>
+        </div>
+    }
 </main>
